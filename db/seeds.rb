@@ -8,6 +8,14 @@ require 'random_data'
         )
 end
 
+50.times do
+    Advertisement.create!(
+            title: RandomData.random_sentence,
+            body: RandomData.random_paragraph,
+            price: RandomData.random_price
+        )
+end
+
 posts = Post.all
 
 # Create Comments
