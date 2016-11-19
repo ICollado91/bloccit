@@ -18,6 +18,20 @@ posts = Post.all
         )
 end
 
+Question.create!(
+    title: "What is a dog?",
+    body: "A dog a four legged animal that is often domesticated and then consumed."
+)
+
+Question.create!(
+    title: "What is a cat?",
+    body: "A cat a four legged animal that is often domesticated and then consumed."
+)
+
+Question.create!(
+    title: "What is a bird?",
+    body: "A bird a two wingged animal that is often domesticated and then consumed."
+)
+
 puts "Seed finished"
-puts "#{Post.count} posts created"
-puts "#{Comment.count} comments created"
+puts "#{Question.count} posts created"
