@@ -34,10 +34,14 @@
 <% end %>
 
 <% if user_has_favorites?(@user) %>
-    <%= render partial: 'favorites/favorite', locals: { post: @post } %>
-    <%= image_tag User.avatar_url(current_user, 48), class: "gravatar" %>
-    <%= pluralize(@post.votes, 'vote') %>
-    <%= pluralize(@user.comments.count, 'comment') %>
+    <h2>Favorites</h2>
+    <% @user.favorites.each do |favs| %>
+        <%= render favs.post %>
+        <%= render partial: 'favorites/favorite', locals: { post: favs.post } %>
+        <%= image_tag favs.post.user.avatar_url(48), class: "gravatar" %>
+        <%= pluralize(favs.post.points, 'point') %>
+        <%= pluralize(favs.post.comments.count, 'comment') %>
+    <% end %>
 <% else %>
     <h5><%= @user.name %> has not favorited anything yet.</h5>
 <% end %>
