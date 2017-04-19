@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'nyan-cat-formatter'
   gem 'shoulda'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :production do
