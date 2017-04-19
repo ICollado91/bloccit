@@ -19,8 +19,25 @@
     </div>
 </div>
 
-<h2>Posts</h2>
-<%= render @user.posts %>
+<% if user_has_posts?(@user) %>
+    <h2>Posts</h2>
+    <%= render @user.posts %>
+<% else %>
+    <h5><%= @user.name %> has not submitted any posts yet.</h5>
+<% end %>
 
-<h2>Comments</h2>
-<%= render @user.comments %>
+<% if user_has_comments?(@user) %>
+    <h2>Comments</h2>
+    <%= render @user.comments %>
+<% else %>
+    <h5><%= @user.name %> has not submitted any comments yet.</h5>
+<% end %>
+
+<% if user_has_favorites?(@user) %>
+    <%= render partial: 'favorites/favorite', locals: { post: @post } %>
+    <%= image_tag User.avatar_url(current_user, 48), class: "gravatar" %>
+    <%= pluralize(@post.votes, 'vote') %>
+    <%= pluralize(@user.comments.count, 'comment') %>
+<% else %>
+    <h5><%= @user.name %> has not favorited anything yet.</h5>
+<% end %>
